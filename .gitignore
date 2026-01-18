@@ -1,0 +1,44 @@
+# Environment files with secrets
+.env
+.env.local
+.env.*.local
+
+# Sensitive data
+resend-dns-records.json
+contact-info.md
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.pem
+*.key
