@@ -62,10 +62,15 @@ All documentation updated for LLM handoff clarity:
 ✅ Contact form with Resend
 ✅ Responsive design
 
+### Recently Completed
+✅ AWS deployment to S3 static hosting
+✅ Production build tested and working
+✅ TypeScript errors fixed in MediaGallery
+
 ### Not Yet Done
-❌ AWS deployment (infrastructure ready in docs, not deployed)
-❌ Domain DNS configuration
-❌ Production build testing
+❌ CloudFront CDN (for HTTPS and custom domain)
+❌ Domain DNS configuration (mikehaertel.com → S3)
+❌ Contact form (disabled for static export)
 ❌ Using gallery in actual pages (component ready, not integrated)
 
 ## File Structure
@@ -128,14 +133,15 @@ npm run dev  # http://localhost:3000
 ```
 
 ### Next Steps (Recommended)
-1. **Integrate gallery into pages** - Use MediaGallery in actual page components
-2. **Test production build** - `npm run build` and verify gallery works
-3. **AWS deployment** - Follow docs/deployment.md to deploy to AWS
-4. **Domain configuration** - Point mikehaertel.com to AWS infrastructure
+1. **Add CloudFront CDN** - Enable HTTPS and custom domain support
+2. **Configure DNS** - Point mikehaertel.com to AWS infrastructure
+3. **Integrate gallery into pages** - Use MediaGallery in actual page components
+4. **Re-enable contact form** - Use Lambda or external service for API
 5. **Add videos** - Convert Live Photos to MP4, add to projects/ for dynamic feel
+6. **GitHub Actions CI/CD** - Auto-deploy on push to main
 
 ## Git/JJ Status
-- **Latest Commit:** 6d1348a - "Add .gitignore and Git/JJ status documentation"
+- **Latest Commit:** (pending) - AWS deployment and documentation updates
 - **Branch:** main
 - **Remote:** https://github.com/BigBirbI-10/mikehaertel-project
 - **JJ:** Initialized and synced
@@ -144,6 +150,17 @@ npm run dev  # http://localhost:3000
 Repository is live and public at: https://github.com/BigBirbI-10/mikehaertel-project
 
 Protected files (.env.local, contact-info.md, resend-dns-records.json) are in .gitignore and not pushed.
+
+## AWS Deployment
+
+**Live Site:** http://mikehaertel-website-2025.s3-website-us-east-1.amazonaws.com
+
+- **Service:** S3 Static Website Hosting
+- **Region:** us-east-1
+- **Bucket:** mikehaertel-website-2025
+- **Type:** Next.js static export
+
+See `DEPLOYMENT.md` for full deployment documentation.
 
 ### To Initialize JJ
 ```bash

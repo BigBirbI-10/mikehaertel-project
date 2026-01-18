@@ -3,9 +3,10 @@
 ## Overview
 Professional portfolio website built with Next.js and AWS infrastructure.
 
-**Domain:** mikehaertel.com
-**Status:** Active Development
+**Domain:** mikehaertel.com (not yet configured)
+**Status:** Deployed to AWS ✅
 **Last Updated:** 2025-01-18
+**Live Site:** http://mikehaertel-website-2025.s3-website-us-east-1.amazonaws.com
 
 ## Project Structure
 ```

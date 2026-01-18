@@ -24,14 +24,14 @@ export function getAssetsFromFolder(folderName: 'headshots' | 'photos' | 'projec
       })
       .map(file => {
         const ext = path.extname(file).toLowerCase();
-        const type = VIDEO_EXTENSIONS.includes(ext) ? 'video' : 'image';
+        const type: 'image' | 'video' = VIDEO_EXTENSIONS.includes(ext) ? 'video' : 'image';
 
         return {
           name: file,
           path: `/assets/${folderName}/${file}`,
           type,
           extension: ext
-        };
+        } as MediaFile;
       })
       .sort((a, b) => a.name.localeCompare(b.name));
   } catch (error) {
