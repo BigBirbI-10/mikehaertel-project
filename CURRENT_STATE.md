@@ -135,19 +135,15 @@ npm run dev  # http://localhost:3000
 5. **Add videos** - Convert Live Photos to MP4, add to projects/ for dynamic feel
 
 ## Git/JJ Status
-- **Latest Commit:** 225dbc1 - "Add automatic media gallery system and streamline assets"
+- **Latest Commit:** 6d1348a - "Add .gitignore and Git/JJ status documentation"
 - **Branch:** main
-- **Remote:** Not yet configured
-- **JJ:** Not yet initialized
+- **Remote:** https://github.com/BigBirbI-10/mikehaertel-project
+- **JJ:** Initialized and synced
 
-### To Push to GitHub
-```bash
-# Add remote
-git remote add origin <github-url>
+### GitHub Repository
+Repository is live and public at: https://github.com/BigBirbI-10/mikehaertel-project
 
-# Push
-git push -u origin main
-```
+Protected files (.env.local, contact-info.md, resend-dns-records.json) are in .gitignore and not pushed.
 
 ### To Initialize JJ
 ```bash

@@ -38,7 +38,7 @@ mikehaertel-project/
 ### Initial Setup
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/BigBirbI-10/mikehaertel-project.git
 cd mikehaertel-project
 
 # Install website dependencies
