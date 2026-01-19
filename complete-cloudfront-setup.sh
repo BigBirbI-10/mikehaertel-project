@@ -4,9 +4,9 @@ set -e
 # Complete CloudFront and DNS Setup Script
 # Run this after ACM certificate is validated
 
-CERT_ARN="arn:aws:acm:us-east-1:308076653178:certificate/a7537d21-91c1-4ab6-93b6-36c836e3ad1b"
-HOSTED_ZONE_ID="Z68ZB0XO34TTO"
-DOMAIN="mhaertel.com"
+CERT_ARN="arn:aws:acm:us-east-1:308076653178:certificate/85b94ed8-b8ba-4633-93ac-a64aeeb9de13"
+HOSTED_ZONE_ID="Z02552811C5CHZS4U1EB7"
+DOMAIN="mikehaertel.com"
 
 echo "==========================================="
 echo "CloudFront Setup for mhaertel.com"
@@ -34,7 +34,7 @@ echo ""
 # Create CloudFront distribution
 echo "2. Creating CloudFront distribution..."
 DISTRIBUTION_ID=$(aws cloudfront create-distribution \
-  --distribution-config file:///tmp/cloudfront-config.json \
+  --distribution-config file:///tmp/cloudfront-config-mikehaertel.json \
   --query 'Distribution.Id' \
   --output text)
 

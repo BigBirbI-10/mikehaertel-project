@@ -1,4 +1,4 @@
-# Domain Setup Status - mhaertel.com
+# Domain Setup Status - mikehaertel.com
 
 **Last Updated:** 2025-01-18
 **Current Status:** ⏳ Waiting for SSL Certificate Validation
@@ -10,16 +10,16 @@
 ### ✅ Completed Steps
 
 1. **SSL Certificate Requested**
-   - Certificate ARN: `arn:aws:acm:us-east-1:308076653178:certificate/a7537d21-91c1-4ab6-93b6-36c836e3ad1b`
-   - Domain: mhaertel.com
-   - Alternative: www.mhaertel.com
+   - Certificate ARN: `arn:aws:acm:us-east-1:308076653178:certificate/85b94ed8-b8ba-4633-93ac-a64aeeb9de13`
+   - Domain: mikehaertel.com
+   - Alternative: www.mikehaertel.com
    - Region: us-east-1 (required for CloudFront)
 
 2. **DNS Validation Record Added**
-   - Record: `_1e2e99d9beca85f26661202b0732a8a6.mhaertel.com`
+   - Record: `_eebfd264054f4367ad50560a0d1398d9.mikehaertel.com`
    - Type: CNAME
-   - Value: `_25c7c51b3dcec714fb141d12e4966e87.jkddzztszm.acm-validations.aws`
-   - Added to Route 53 hosted zone: Z68ZB0XO34TTO
+   - Value: `_63d1d5cb016704692072a86dda6223c1.jkddzztszm.acm-validations.aws`
+   - Added to Route 53 hosted zone: Z02552811C5CHZS4U1EB7
    - ✓ DNS record confirmed propagated
 
 3. **CloudFront Configuration Prepared**
@@ -49,20 +49,20 @@ Once the certificate validates (Status: ISSUED), the following will happen:
 ### 1. Create CloudFront Distribution
 - Origin: S3 website endpoint
 - SSL Certificate: Attached
-- Custom domains: mhaertel.com, www.mhaertel.com
+- Custom domains: mikehaertel.com, www.mikehaertel.com
 - HTTPS: Redirect HTTP to HTTPS
 - Deployment time: ~10-15 minutes
 
 ### 2. Update Route 53 DNS
-- Create A record: mhaertel.com → CloudFront (alias)
-- Create AAAA record: mhaertel.com → CloudFront (IPv6)
+- Create A record: mikehaertel.com → CloudFront (alias)
+- Create AAAA record: mikehaertel.com → CloudFront (IPv6)
 - Replace existing IP-based A record
 - DNS propagation: ~5-10 minutes
 
 ### 3. Final Result
 Your website will be live at:
-- https://mhaertel.com
-- https://www.mhaertel.com
+- https://mikehaertel.com
+- https://www.mikehaertel.com
 
 ---
 
@@ -99,19 +99,19 @@ If you prefer to complete in AWS Console:
    - Create distribution:
      - Origin: `mikehaertel-website-2025.s3-website-us-east-1.amazonaws.com`
      - Viewer protocol: Redirect HTTP to HTTPS
-     - Alternate domains: mhaertel.com, www.mhaertel.com
+     - Alternate domains: mikehaertel.com, www.mikehaertel.com
      - SSL certificate: Select your validated certificate
    - Wait 10-15 minutes for deployment
 
 3. **Update Route 53**
-   - Go to Route 53 → Hosted zones → mhaertel.com
+   - Go to Route 53 → Hosted zones → mikehaertel.com
    - Delete or update the A record (currently pointing to 35.153.134.191)
    - Create new A record (Alias to CloudFront distribution)
    - Create AAAA record (Alias to CloudFront distribution)
 
 4. **Test**
    - Wait 5-10 minutes for DNS
-   - Visit https://mhaertel.com
+   - Visit https://mikehaertel.com
 
 ---
 
@@ -145,13 +145,13 @@ Press Ctrl+C to stop monitoring.
 
 1. **Verify DNS record exists:**
    ```bash
-   dig +short _1e2e99d9beca85f26661202b0732a8a6.mhaertel.com CNAME
+   dig +short _1e2e99d9beca85f26661202b0732a8a6.mikehaertel.com CNAME
    ```
    Should return: `_25c7c51b3dcec714fb141d12e4966e87.jkddzztszm.acm-validations.aws.`
 
 2. **Check Route 53:**
    ```bash
-   aws route53 list-resource-record-sets --hosted-zone-id Z68ZB0XO34TTO \
+   aws route53 list-resource-record-sets --hosted-zone-id Z02552811C5CHZS4U1EB7 \
      --query "ResourceRecordSets[?contains(Name, '_1e2e99d9beca85f26661202b0732a8a6')]"
    ```
 
@@ -176,8 +176,8 @@ aws acm delete-certificate \
 
 # Request new one
 aws acm request-certificate \
-  --domain-name mhaertel.com \
-  --subject-alternative-names www.mhaertel.com \
+  --domain-name mikehaertel.com \
+  --subject-alternative-names www.mikehaertel.com \
   --validation-method DNS \
   --region us-east-1
 ```
@@ -224,7 +224,7 @@ After running `complete-cloudfront-setup.sh`, it will display your CloudFront Di
 **What's Next:**
 - 🔜 CloudFront distribution creation
 - 🔜 DNS update to point to CloudFront
-- 🎯 Live at https://mhaertel.com
+- 🎯 Live at https://mikehaertel.com
 
 **Estimated Total Time Remaining:** 15-45 minutes
 - Certificate validation: 0-30 minutes (in progress)
@@ -238,7 +238,7 @@ After running `complete-cloudfront-setup.sh`, it will display your CloudFront Di
 **Resources Created:**
 - S3 Bucket: `mikehaertel-website-2025` (us-east-1)
 - ACM Certificate: `a7537d21-91c1-4ab6-93b6-36c836e3ad1b` (us-east-1)
-- Route 53 Zone: `Z68ZB0XO34TTO` (mhaertel.com)
+- Route 53 Zone: `Z02552811C5CHZS4U1EB7` (mikehaertel.com)
 
 **Still to Create:**
 - CloudFront Distribution (waiting on certificate)
